@@ -242,6 +242,8 @@ class Kiwoom(QAxWidget):
                 "open": int(open_p) if open_p else 0,
                 "high": int(high_p) if high_p else 0,
                 "low": int(low_p) if low_p else 0,
+                # Kiwoom API returns negative close price when the stock fell on that day;
+                # abs() converts it to the actual traded price.
                 "close": abs(int(close_p)) if close_p else 0,
                 "volume": int(volume) if volume else 0,
             })

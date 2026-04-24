@@ -158,6 +158,11 @@ class AutoTrader:
 
         Returns:
             매수 가능 수량 (0이면 매수 불가)
+
+        Note:
+            한국 주식 시장에서는 일반적으로 1주 단위로 거래하므로 최소 거래 단위
+            제한이 없습니다. ELW 등 일부 상품은 10주 단위가 최소일 수 있으나
+            여기서는 일반 주식만 대상으로 합니다.
         """
         if price <= 0:
             return 0
@@ -198,6 +203,9 @@ class AutoTrader:
         )
         if result == ErrorCode.OP_ERR_NONE:
             logger.info("[%s] 매도 주문 성공", code)
+            # NOTE: 포지션은 주문 성공 시 즉시 제거합니다.
+            # 실제 체결 확인은 OnReceiveChejanData 이벤트로 처리하며,
+            # register_chejan_callback()을 통해 잔고 동기화를 수행하세요.
             self._positions.pop(code, None)
         else:
             logger.error(
