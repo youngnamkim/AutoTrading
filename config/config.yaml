@@ -1,0 +1,23 @@
+kiwoom:
+  account: ""          # 계좌번호 (Kiwoom account number)
+  screen_no: "0001"    # 화면번호
+
+trading:
+  max_buy_amount: 1000000     # 최대 매수 금액 (KRW)
+  order_quantity: 1            # 기본 주문 수량
+  stop_loss_pct: 0.05          # 손절 비율 (5%)
+  take_profit_pct: 0.10        # 익절 비율 (10%)
+
+strategy:
+  name: "moving_average"       # 사용할 전략 이름
+  short_period: 5              # 단기 이동평균 기간
+  long_period: 20              # 장기 이동평균 기간
+
+logging:
+  level: "INFO"
+  file: "logs/autotrading.log"
+
+target_stocks:
+  - "005930"   # Samsung Electronics
+  - "000660"   # SK Hynix
+  - "035420"   # NAVER
